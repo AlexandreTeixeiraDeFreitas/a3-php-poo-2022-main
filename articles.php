@@ -1,5 +1,21 @@
-<?php require __DIR__ . '/templates/header.php'; ?>
+<?php 
+    require __DIR__ . '/config.php';
+    require __DIR__ . '/templates/header.php'; 
+    require __DIR__ . '/src/article.fn.php'; 
+    $article = getArticles($pdo); 
+    var_dump($article);
+?>
 <h1>Articles</h1>
+<?php
+    foreach ($article as $article) { ?>
+    <section>
+        <h2><?= $article['title']?></h2>
+        <p><?= $article['description']?></p>
+        <p>
+            <?= $article['content']?>
+        </p>
+    </section>
+    <?php } ?>
 <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id
     placerat odio. Aliquam in eros id sem ultricies pharetra at eu
